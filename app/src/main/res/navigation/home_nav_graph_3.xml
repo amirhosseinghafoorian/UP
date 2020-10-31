@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph_3"
+    app:startDestination="@id/homeFragment32">
+
+    <fragment
+        android:id="@+id/homeFragment32"
+        android:name="com.a.up.home.ui.HomeFragment3"
+        android:label="fragment_home3"
+        tools:layout="@layout/fragment_home3" />
+</navigation>
