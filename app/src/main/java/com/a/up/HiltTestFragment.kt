@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,7 +56,7 @@ constructor(
 class SomeInterfaceImpl1
 @Inject
 constructor(
-    private val someDependency : String
+    private val someDependency: String
 ) : SomeInterface {
     override fun getAThing(): String {
         return "A thing1, $someDependency"
@@ -67,7 +66,7 @@ constructor(
 class SomeInterfaceImpl2
 @Inject
 constructor(
-    private val someDependency : String
+    private val someDependency: String
 ) : SomeInterface {
     override fun getAThing(): String {
         return "A thing2, $someDependency"
@@ -85,7 +84,7 @@ class MyModule {
 
     @Singleton
     @Provides
-    fun provideSomeString() : String{
+    fun provideSomeString(): String {
         return "some string"
     }
 
@@ -94,7 +93,7 @@ class MyModule {
     @Provides
     fun provideSomeInterface1(
         someString: String
-    ) : SomeInterface{
+    ): SomeInterface {
         return SomeInterfaceImpl1(someString)
     }
 
@@ -103,7 +102,7 @@ class MyModule {
     @Provides
     fun provideSomeInterface2(
         someString: String
-    ) : SomeInterface{
+    ): SomeInterface {
         return SomeInterfaceImpl2(someString)
     }
 
