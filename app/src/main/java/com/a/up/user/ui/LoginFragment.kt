@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.a.up.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
+import javax.inject.Inject
 
 class LoginFragment : Fragment() {
 
@@ -23,6 +25,9 @@ class LoginFragment : Fragment() {
         login_btn.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeHostFragment())
         }
+        login_btn_2.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHiltTestFragment())
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,3 +35,9 @@ class LoginFragment : Fragment() {
 //        activity?.window?.decorView?.systemUiVisibility = 0
     }
 }
+
+
+
+
+
+
