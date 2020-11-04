@@ -1,5 +1,6 @@
-package com.a.up
+package com.a.up.services
 
+import com.a.up.MyApp
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import dagger.Module
 import dagger.Provides
@@ -38,9 +39,15 @@ object MyModule {
     @Provides
     fun retrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.5.69:3000/api/")
+            .baseUrl("https://reqres.in/api/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun api(retrofit: Retrofit) : Api {
+        return retrofit.create(Api::class.java)
     }
 }

@@ -33,7 +33,9 @@ class HomeFragment1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeViewModel.userList.observe(viewLifecycleOwner,{list ->
-            fillRecycler(list)
+            if(list != null) {
+                fillRecycler(list)
+            }
         })
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -47,7 +49,7 @@ class HomeFragment1 : Fragment() {
             items.forEachIndexed { pos, model ->
                 listItem {
                     id(pos)
-                    username(model + pos.toString())
+                    username(model)
 //                    onClickListItem{ _ ->
 //                        Log.i("baby" , "$model : $pos")
 //                    }
