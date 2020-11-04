@@ -15,9 +15,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{onClickListItem}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{onClickListItem}">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/li_iv_1"
