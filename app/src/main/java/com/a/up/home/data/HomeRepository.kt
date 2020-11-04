@@ -1,4 +1,10 @@
 package com.a.up.home.data
 
-class HomeRepository {
+import javax.inject.Inject
+
+class HomeRepository @Inject constructor(private val remote: HomeRemote) {
+
+    fun fillFromRepository() {
+        remote.fillFromRemote()
+    }
 }
