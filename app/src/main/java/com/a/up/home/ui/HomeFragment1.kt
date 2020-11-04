@@ -39,7 +39,7 @@ class HomeFragment1 : Fragment() {
         })
 
         CoroutineScope(Dispatchers.IO).launch {
-            homeViewModel.fillFromViewModel()
+            homeViewModel.fillFromViewModel(2)
         }
     }
 

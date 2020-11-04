@@ -9,9 +9,9 @@ class HomeViewModel @ViewModelInject constructor(private val homeRepository: Hom
 
     var userList = MutableLiveData<MutableList<String>>()
 
-    suspend fun fillFromViewModel() {
+    suspend fun fillFromViewModel(page : Int) {
         userList.postValue(null)
-        userList.postValue(homeRepository.fillFromRepository())
+        userList.postValue(homeRepository.fillFromRepository(page))
     }
 
 
