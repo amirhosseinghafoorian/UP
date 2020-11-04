@@ -15,22 +15,22 @@ import dagger.hilt.android.HiltAndroidApp
 class MyApp : Application() {
 
     companion object {
-//        val networkFlipperPlugin = NetworkFlipperPlugin()
+        val networkFlipperPlugin = NetworkFlipperPlugin()
         lateinit var publicApp: Application
     }
 
     override fun onCreate() {
         super.onCreate()
         publicApp = this
-//        SoLoader.init(this, false)
-//        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
-//            val client = AndroidFlipperClient.getInstance(this)
-//            client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
-//            client.addPlugin(DatabasesFlipperPlugin(this))
-//            client.addPlugin(networkFlipperPlugin)
-//            client.addPlugin(SharedPreferencesFlipperPlugin(this,"setting"))
-//
-//            client.start()
-//        }
+        SoLoader.init(this, false)
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
+            val client = AndroidFlipperClient.getInstance(this)
+            client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
+            client.addPlugin(DatabasesFlipperPlugin(this))
+            client.addPlugin(networkFlipperPlugin)
+            client.addPlugin(SharedPreferencesFlipperPlugin(this,"setting"))
+
+            client.start()
+        }
     }
 }
