@@ -13,6 +13,9 @@ import com.a.up.home.data.HomeViewModel
 import com.a.up.listItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home1.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -29,25 +32,25 @@ class HomeFragment1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fillRecycler()
+        homeViewModel.userList.observe(viewLifecycleOwner,{list ->
+            fillRecycler(list)
+        })
 
-        homeViewModel.fillFromViewModel()
+        CoroutineScope(Dispatchers.IO).launch {
+            homeViewModel.fillFromViewModel()
+        }
     }
 
-    private fun fillRecycler() {
-        val items = mutableListOf<String>()
-        repeat(100) {
-            items.add("user ")
-        }
+    private fun fillRecycler(items : MutableList<String>) {
 
         recyclerView.withModels {
             items.forEachIndexed { pos, model ->
                 listItem {
                     id(pos)
                     username(model + pos.toString())
-                    onClickListItem{ _ ->
-                        Log.i("baby" , "$model : $pos")
-                    }
+//                    onClickListItem{ _ ->
+//                        Log.i("baby" , "$model : $pos")
+//                    }
                 }
             }
         }

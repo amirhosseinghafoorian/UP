@@ -1,14 +1,16 @@
 package com.a.up.home.data
 
-import android.util.Log
 import javax.inject.Inject
 
 class HomeRemote @Inject
-constructor(private val retrofit : String)
-{
+constructor(private val retrofit: String) {
 
-   fun fillFromRemote(){
-       Log.i("nmudi", retrofit)
-   }
+    suspend fun fillFromRemote(): MutableList<String> {
+        val items = mutableListOf<String>()
+        repeat(100) {
+            items.add("user ")
+        }
+        return items
+    }
 
 }
