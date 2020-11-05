@@ -1,6 +1,7 @@
 package com.a.up.services
 
 import com.a.up.MyApp
+import com.a.up.storage.Setting
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import dagger.Module
 import dagger.Provides
@@ -49,5 +50,11 @@ object MyModule {
     @Provides
     fun api(retrofit: Retrofit) : Api {
         return retrofit.create(Api::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSetting() : Setting {
+        return Setting()
     }
 }

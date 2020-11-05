@@ -2,14 +2,18 @@ package com.a.up.home.ui
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.a.up.R
+import com.a.up.storage.Setting
 
-class SplashFragment : Fragment() {
+class SplashFragment
+//@Inject constructor(private val setting: Setting)
+    : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +29,21 @@ class SplashFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        //                                  *** EDIT ***
+        val setting = Setting()
         val handler = Handler()
         handler.postDelayed({
-
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            if (true) {
+                if (setting.getString("javad") == "***") {
+                    setting.putString("javad", "baby")
+                }
+                Toast.makeText(requireContext(), setting.getString("javad"), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            }
+        //                                  *** EDIT ***
         }, 3000)
     }
 
