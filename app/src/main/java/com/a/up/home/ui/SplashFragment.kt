@@ -34,7 +34,7 @@ class SplashFragment
             val pref = homeViewModel.getPrefString("token")
             if (pref == "***") {
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
-            }else {
+            } else {
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeHostFragment())
             }
             Toast.makeText(requireContext(), pref, Toast.LENGTH_SHORT)
