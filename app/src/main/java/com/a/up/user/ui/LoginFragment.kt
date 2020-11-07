@@ -27,6 +27,7 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         login_btn.setOnClickListener {
+            //            here should check for login response and if true save the token and then navigate
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeHostFragment())
         }
         login_btn_2.setOnClickListener {

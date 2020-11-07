@@ -1,32 +1,32 @@
-//package com.a.up
-//
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import dagger.Module
-//import dagger.Provides
-//import dagger.hilt.InstallIn
-//import dagger.hilt.android.AndroidEntryPoint
-//import dagger.hilt.android.components.ApplicationComponent
-//import javax.inject.Inject
-//import javax.inject.Qualifier
-//import javax.inject.Singleton
+package com.a.up
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Inject
+import javax.inject.Qualifier
+import javax.inject.Singleton
 //
 //@AndroidEntryPoint
-//class HiltTestFragment : Fragment() {
+class HiltTestFragment : Fragment() {
 //
 //    //      field injection
 //    @Inject
 //    lateinit var someClass: SomeClass
 //
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.fragment_hilt_test, container, false)
-//    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_hilt_test, container, false)
+    }
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@
 ////        println(someClass.doAThing2())
 //
 //    }
-//}
+}
 //
 //class SomeClass
 //@Inject

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.a.up.R
 import com.a.up.home.data.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,13 +31,14 @@ class SplashFragment
 
         val handler = Handler()
         handler.postDelayed({
-            val pref = homeViewModel.getPrefString("javad")
+            val pref = homeViewModel.getPrefString("token")
             if (pref == "***") {
-                homeViewModel.putPrefString("javad", "baby")
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            }else {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeHostFragment())
             }
             Toast.makeText(requireContext(), pref, Toast.LENGTH_SHORT)
                 .show()
-//                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
         }, 3000)
     }
 
