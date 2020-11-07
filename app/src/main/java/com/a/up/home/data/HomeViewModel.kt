@@ -7,8 +7,9 @@ import com.a.up.home.domain.AllUsersUseCase
 import com.a.up.home.domain.SharedPrefUseCase
 
 class HomeViewModel @ViewModelInject constructor(
-    private val allUsersUseCase: AllUsersUseCase ,
-    private val sharedPrefUsecase: SharedPrefUseCase ) :
+    private val allUsersUseCase: AllUsersUseCase,
+    private val sharedPrefUseCase: SharedPrefUseCase
+) :
     ViewModel() {
 
     var userList = MutableLiveData<MutableList<String>>()
@@ -18,12 +19,15 @@ class HomeViewModel @ViewModelInject constructor(
         userList.postValue(allUsersUseCase.fillFromUseCase(page))
     }
 
-    fun getPrefString (key : String) : String{
-        return sharedPrefUsecase.getPrefString(key)
+    fun getPrefString(key: String): String {
+        return sharedPrefUseCase.getPrefString(key)
     }
 
-    fun putPrefString (key : String , value : String) {
-        sharedPrefUsecase.putPrefString(key , value)
+    fun putPrefString(
+        key: String,
+        value: String
+    ) { //                should be used in login fragment
+        sharedPrefUseCase.putPrefString(key, value)
     }
 
 }
