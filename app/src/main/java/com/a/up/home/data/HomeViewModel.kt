@@ -23,11 +23,4 @@ class HomeViewModel @ViewModelInject constructor(
         return sharedPrefUseCase.getPrefString(key)
     }
 
-    fun putPrefString(
-        key: String,
-        value: String
-    ) { //                should be used in login fragment
-        sharedPrefUseCase.putPrefString(key, value)
-    }
-
 }

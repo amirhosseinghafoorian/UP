@@ -9,7 +9,7 @@ class HomeRepository @Inject constructor(
     ) {
 
     suspend fun fillFromRepository(page: Int): MutableList<String> {
-        return remote.fillFromRemote(page)
+        return remote.fillAllUsersFromRemote(page)
     }
 
     fun getPrefString (key : String) : String{
