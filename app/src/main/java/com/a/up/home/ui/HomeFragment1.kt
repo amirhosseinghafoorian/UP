@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home1.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -30,15 +31,22 @@ class HomeFragment1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.userList.observe(viewLifecycleOwner, { list ->
-            if (list != null) {
-                fillRecycler(list)
+        val list = mutableListOf<String>()
+        CoroutineScope(Dispatchers.Main).launch {
+            homeViewModel.fillWithFlow(2).collect {
+                list.add(it)
             }
-        })
-
-        CoroutineScope(Dispatchers.IO).launch {
-            homeViewModel.fillFromViewModel(2)
+            fillRecycler(list)
         }
+//        homeViewModel.userList.observe(viewLifecycleOwner, { list ->
+//            if (list != null) {
+//                fillRecycler(list)
+//            }
+//        })
+
+//        CoroutineScope(Dispatchers.IO).launch {
+//            homeViewModel.fillFromViewModel(2)
+//        }
     }
 
     private fun fillRecycler(items: MutableList<String>) {

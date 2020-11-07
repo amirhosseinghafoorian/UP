@@ -1,6 +1,7 @@
 package com.a.up.home.data
 
 import com.a.up.storage.Setting
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
@@ -8,7 +9,7 @@ class HomeRepository @Inject constructor(
     private val setting: Setting
     ) {
 
-    suspend fun fillFromRepository(page: Int): MutableList<String> {
+    suspend fun fillFromRepository(page: Int): Flow<String> {
         return remote.fillAllUsersFromRemote(page)
     }
 
