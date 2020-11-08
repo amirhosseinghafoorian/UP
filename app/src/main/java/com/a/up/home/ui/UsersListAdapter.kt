@@ -23,7 +23,10 @@ class UsersListAdapter(diffCallback: DiffUtil.ItemCallback<Data>) :
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind.username = item?.last_name
+        holder.bind.firstName = item?.first_name
+        holder.bind.lastName = item?.last_name
+        holder.bind.email = item?.email
+        holder.bind.pic = item?.avatar
     }
 }
 

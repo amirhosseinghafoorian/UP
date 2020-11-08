@@ -5,7 +5,19 @@
     <data>
 
         <variable
-            name="username"
+            name="firstName"
+            type="String" />
+
+        <variable
+            name="lastName"
+            type="String" />
+
+        <variable
+            name="email"
+            type="String" />
+
+        <variable
+            name="pic"
             type="String" />
 
         <variable
@@ -16,7 +28,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -27,34 +39,63 @@
         android:focusable="true"
         android:layoutDirection="rtl"
         app:cardCornerRadius="20dp"
-        app:rippleColor="@android:color/holo_blue_light">
+        app:rippleColor="@android:color/white"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:onClick="@{onClickListItem}">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/li_iv_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name"
-                android:textColor="@android:color/white"
-                android:textSize="24sp"
+            <ImageView
+                app:url="@{pic}"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/image_1"
+                android:contentDescription="@string/todo" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/li_iv_2"
+                android:id="@+id/textView_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@{username}"
+                android:text="@{firstName}"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@id/li_iv_1"
+                app:layout_constraintRight_toLeftOf="@id/textView_2"
+                app:layout_constraintLeft_toRightOf="@id/image_1"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:id="@+id/textView_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{lastName}"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{email}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintRight_toRightOf="@id/textView_2"
+                app:layout_constraintLeft_toLeftOf="@id/textView_1"
+                app:layout_constraintTop_toBottomOf="@id/textView_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
