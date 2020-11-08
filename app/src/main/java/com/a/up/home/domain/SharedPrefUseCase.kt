@@ -12,9 +12,17 @@ class SharedPrefUseCase @Inject constructor(private val homeRepository: HomeRepo
     }
 
     fun putPrefString(
-        key: String ,
-        value : String
-    ){
-        homeRepository.putPrefString(key , value)
+        key: String,
+        value: String
+    ) {
+        homeRepository.putPrefString(key, value)
     }
+
+    fun removePrefString(
+        key: String
+    ) {
+        homeRepository.removePrefString(key)
+    }
+
+
 }

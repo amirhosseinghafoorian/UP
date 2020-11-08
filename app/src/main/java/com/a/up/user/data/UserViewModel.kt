@@ -24,7 +24,13 @@ class UserViewModel
     fun putPrefString(
         key: String,
         value: String
-    ) { //                should be used in login fragment
+    ) {
         sharedPrefUseCase.putPrefString(key, value)
+    }
+
+    fun removePrefString(
+        key: String
+    ) {
+        sharedPrefUseCase.removePrefString(key)
     }
 }

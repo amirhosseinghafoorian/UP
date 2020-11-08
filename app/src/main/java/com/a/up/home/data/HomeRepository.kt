@@ -33,4 +33,10 @@ class HomeRepository @Inject constructor(
     fun putPrefString(key: String, value: String) {
         setting.putString(key, value)
     }
+
+    fun removePrefString(key: String) {
+        setting.remove(key)
+    }
+
+
 }

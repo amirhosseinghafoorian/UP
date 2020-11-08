@@ -5,11 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.a.up.R
 import com.a.up.setupWithNavController
+import com.a.up.user.data.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home_host.*
 
+@AndroidEntryPoint
 class HomeHostFragment : Fragment() {
+
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,5 +46,12 @@ class HomeHostFragment : Fragment() {
             containerId = R.id.fragment,
             intent = requireActivity().intent
         )
+
+
+
+        fab.setOnClickListener {
+            userViewModel.removePrefString("token")
+            findNavController().navigate(HomeHostFragmentDirections.actionHomeHostFragmentToLoginFragment())
+        }
     }
 }

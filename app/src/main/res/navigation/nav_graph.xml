@@ -37,7 +37,13 @@
         android:id="@+id/homeHostFragment"
         android:name="com.a.up.home.ui.HomeHostFragment"
         android:label="fragment_home_host"
-        tools:layout="@layout/fragment_home_host" />
+        tools:layout="@layout/fragment_home_host" >
+        <action
+            app:popUpTo="@id/homeHostFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_homeHostFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hiltTestFragment"
         android:name="com.a.up.HiltTestFragment"
