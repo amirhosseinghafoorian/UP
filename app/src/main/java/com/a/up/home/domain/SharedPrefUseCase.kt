@@ -24,5 +24,4 @@ class SharedPrefUseCase @Inject constructor(private val homeRepository: HomeRepo
         homeRepository.removePrefString(key)
     }
 
-
 }

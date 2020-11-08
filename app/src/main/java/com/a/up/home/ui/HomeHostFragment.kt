@@ -47,8 +47,6 @@ class HomeHostFragment : Fragment() {
             intent = requireActivity().intent
         )
 
-
-
         fab.setOnClickListener {
             userViewModel.removePrefString("token")
             findNavController().navigate(HomeHostFragmentDirections.actionHomeHostFragmentToLoginFragment())
