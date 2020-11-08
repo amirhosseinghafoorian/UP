@@ -6,20 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DiffUtil
 import com.a.up.R
 import com.a.up.home.data.HomeViewModel
-import com.a.up.listItem
+import com.a.up.user.model.Data
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home1.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class HomeFragment1 : Fragment() {
+
     private val homeViewModel: HomeViewModel by viewModels()
+
+    private lateinit var usersListAdapter: UsersListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +33,14 @@ class HomeFragment1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpAdapter()
 
-        val list = mutableListOf<String>()
-        CoroutineScope(Dispatchers.Main).launch {
-            homeViewModel.fillWithFlow(2).collect {
-                list.add(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeViewModel.pagedUsers().collect { users ->
+                usersListAdapter.submitData(users)
             }
-            fillRecycler(list)
         }
+
 //        homeViewModel.userList.observe(viewLifecycleOwner, { list ->
 //            if (list != null) {
 //                fillRecycler(list)
@@ -49,19 +52,41 @@ class HomeFragment1 : Fragment() {
 //        }
     }
 
-    private fun fillRecycler(items: MutableList<String>) {
+    object UserComparator : DiffUtil.ItemCallback<Data>() {
+        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-        recyclerView.withModels {
-            items.forEachIndexed { pos, model ->
-                listItem {
-                    id(pos)
-                    username(model)
-//                    onClickListItem{ _ ->
-//                        Log.i("baby" , "$model : $pos")
-//                    }
-                }
-            }
+        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
+            return oldItem == newItem
         }
     }
 
+    private fun setUpAdapter() {
+        usersListAdapter = UsersListAdapter(UserComparator)
+
+        recyclerView.apply {
+            adapter = usersListAdapter
+        }
+    }
 }
+
+/*
+// ------------------------------------------------------------------------------
+
+//                  ***          removed epoxy          ***
+
+//        recyclerView.withModels {
+//            items.forEachIndexed { pos, model ->
+//                listItem {
+//                    id(pos)
+//                    username(model)
+////                    onClickListItem{ _ ->
+////                        Log.i("baby" , "$model : $pos")
+////                    }
+//                }
+//            }
+//        }
+//                  ***          removed epoxy          ***
+
+ */

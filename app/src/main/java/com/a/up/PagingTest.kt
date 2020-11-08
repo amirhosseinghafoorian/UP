@@ -2,30 +2,24 @@ package com.a.up
 
 import androidx.paging.PagingSource
 import com.a.up.home.data.HomeRemote
-import kotlinx.coroutines.flow.collect
+import com.a.up.user.model.Data
 
 class PagingTest(
     private val backend: HomeRemote,
 
-    ) : PagingSource<Int, String>() {
+    ) : PagingSource<Int, Data>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, String> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = backend.fillAllUsersFromRemote(nextPageNumber)
-            val list = mutableListOf<String>()
-            response.collect {
-                list.add(it)
-            }
+            val response = backend.fillAllUsersFromRemote(nextPageNumber).body()
             LoadResult.Page(
-                data = list,
+                data = response?.data ?: listOf(),
                 prevKey = null, // Only paging forward.
-                nextKey = nextPageNumber
+                nextKey = nextPageNumber + 1
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
-            // Handle errors in this block and return LoadResult.Error if it is an
-            // expected error (such as a network failure).
         }
 
 

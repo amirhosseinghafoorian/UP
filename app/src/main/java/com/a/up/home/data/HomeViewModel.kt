@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.a.up.home.domain.AllUsersUseCase
 import com.a.up.home.domain.SharedPrefUseCase
-import kotlinx.coroutines.flow.Flow
 
 class HomeViewModel @ViewModelInject constructor(
     private val allUsersUseCase: AllUsersUseCase,
@@ -20,9 +19,7 @@ class HomeViewModel @ViewModelInject constructor(
 //        userList.postValue(allUsersUseCase.fillFromUseCase(page))
 //    }
 
-    suspend fun fillWithFlow(page: Int) : Flow<String> {
-        return allUsersUseCase.fillFromUseCase(page)
-    }
+    fun pagedUsers() = allUsersUseCase.pagedUsers()
 
     fun getPrefString(key: String): String {
         return sharedPrefUseCase.getPrefString(key)
