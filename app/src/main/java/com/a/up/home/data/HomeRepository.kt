@@ -14,7 +14,6 @@ class HomeRepository @Inject constructor(
     private val setting: Setting
 ) {
 
-
     fun pagedUsers(): Flow<PagingData<Data>> {
         return Pager(
             PagingConfig(
