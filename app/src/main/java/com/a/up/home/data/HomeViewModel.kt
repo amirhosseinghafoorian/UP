@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.a.up.home.domain.AllUsersUseCase
 import com.a.up.home.domain.SharedPrefUseCase
+import kotlinx.coroutines.flow.Flow
 
 class HomeViewModel @ViewModelInject constructor(
     private val allUsersUseCase: AllUsersUseCase,
@@ -20,7 +21,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun pagedUsers() = allUsersUseCase.pagedUsers()
 
-    fun getPrefString(key: String): String {
+    fun getPrefString(key: String): Flow<String> {
         return sharedPrefUseCase.getPrefString(key)
     }
 

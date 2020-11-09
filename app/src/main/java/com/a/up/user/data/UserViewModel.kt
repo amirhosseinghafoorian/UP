@@ -21,14 +21,14 @@ class UserViewModel
         loginResult.postValue(loginUseCase.login(username, password))
     }
 
-    fun putPrefString(
+    suspend fun putPrefString(
         key: String,
         value: String
     ) {
         sharedPrefUseCase.putPrefString(key, value)
     }
 
-    fun removePrefString(
+    suspend fun removePrefString(
         key: String
     ) {
         sharedPrefUseCase.removePrefString(key)

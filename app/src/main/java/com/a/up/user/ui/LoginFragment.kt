@@ -11,11 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.a.up.R
 import com.a.up.core.resource.Status
+import com.a.up.general.GeneralKeys
 import com.a.up.user.data.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -35,14 +38,22 @@ class LoginFragment : Fragment() {
         userViewModel.loginResult.observe(viewLifecycleOwner, { result ->
             if (result != null) {
                 if (result.status == Status.SUCCESS || result.code == 200) {
-                    userViewModel.putPrefString("token", result.data?.token.toString())
-                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeHostFragment())
+                    CoroutineScope(Dispatchers.IO).launch {
+                        userViewModel.putPrefString(
+                            GeneralKeys.pref_key_token,
+                            result.data?.token.toString()
+                        )
+                        withContext(Dispatchers.Main) {
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeHostFragment())
+                        }
+                    }
                 } else if (result.status == Status.LOADING) {
-                    Toast.makeText(requireContext(), "Please wait ...", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), GeneralKeys.key_wait, Toast.LENGTH_SHORT)
+                        .show()
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "wrong username or password",
+                        GeneralKeys.key_wrong_user_pass,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

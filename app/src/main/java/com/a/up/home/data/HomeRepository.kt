@@ -5,13 +5,15 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.a.up.general.MyPagingSource
 import com.a.up.storage.Setting
+import com.a.up.storage.SettingDataStore
 import com.a.up.user.model.Data
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
     private val remote: HomeRemote,
-    private val setting: Setting
+    private val setting: Setting,
+    private val dataStore: SettingDataStore
 ) {
 
     fun pagedUsers(): Flow<PagingData<Data>> {
@@ -26,16 +28,21 @@ class HomeRepository @Inject constructor(
         }.flow
     }
 
-    fun getPrefString(key: String): String {
-        return setting.getString(key)
+    fun getPrefString(key: String): Flow<String> {
+        return dataStore.getString(key)
     }
 
-    fun putPrefString(key: String, value: String) {
-        setting.putString(key, value)
+    suspend fun putPrefString(
+        key: String,
+        value: String
+    ) {
+        dataStore.putString(key, value)
     }
 
-    fun removePrefString(key: String) {
-        setting.remove(key)
+    suspend fun removePrefString(
+        key: String
+    ) {
+        dataStore.removeItem(key)
     }
 
 

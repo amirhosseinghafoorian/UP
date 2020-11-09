@@ -1,12 +1,15 @@
 package com.a.up.services
 
+import android.content.Context
 import com.a.up.general.MyApp
 import com.a.up.storage.Setting
+import com.a.up.storage.SettingDataStore
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -56,5 +59,11 @@ object MyModule {
     @Provides
     fun provideSetting() : Setting {
         return Setting()
+    }
+
+    @Singleton
+    @Provides
+    fun provideDataStore(@ApplicationContext context: Context) : SettingDataStore {
+        return SettingDataStore(context)
     }
 }

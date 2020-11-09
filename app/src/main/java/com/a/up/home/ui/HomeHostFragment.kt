@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.a.up.R
+import com.a.up.general.GeneralKeys
 import com.a.up.general.setupWithNavController
 import com.a.up.user.data.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home_host.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class HomeHostFragment : Fragment() {
@@ -48,8 +53,12 @@ class HomeHostFragment : Fragment() {
         )
 
         fab.setOnClickListener {
-            userViewModel.removePrefString("token")
-            findNavController().navigate(HomeHostFragmentDirections.actionHomeHostFragmentToLoginFragment())
+            lifecycleScope.launch {
+                userViewModel.removePrefString(GeneralKeys.pref_key_token)
+                withContext(Dispatchers.Main) {
+                    findNavController().navigate(HomeHostFragmentDirections.actionHomeHostFragmentToLoginFragment())
+                }
+            }
         }
     }
 }
