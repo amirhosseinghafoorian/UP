@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/hiltTestFragment"
-        android:name="com.a.up.HiltTestFragment"
+        android:name="com.a.up.general.HiltTestFragment"
         android:label="fragment_hilt_test"
         tools:layout="@layout/fragment_hilt_test" />
 

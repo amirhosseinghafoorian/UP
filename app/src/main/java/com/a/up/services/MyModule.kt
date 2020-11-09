@@ -1,6 +1,6 @@
 package com.a.up.services
 
-import com.a.up.MyApp
+import com.a.up.general.MyApp
 import com.a.up.storage.Setting
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import dagger.Module

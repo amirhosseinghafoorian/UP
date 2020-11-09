@@ -1,4 +1,4 @@
-package com.a.up
+package com.a.up.general
 
 
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.a.up.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
@@ -55,7 +56,7 @@ fun BottomNavigationView.setupWithNavController(
 
         // Attach or detach nav host fragment depending on whether it's the selected item.
         if (this.selectedItemId == graphId) {
-            // Update livedata with the selected graph
+            // Update liveData with the selected graph
             selectedNavController.value = navHostFragment.navController
             attachNavHostFragment(fragmentManager, navHostFragment, index == 0)
         } else {

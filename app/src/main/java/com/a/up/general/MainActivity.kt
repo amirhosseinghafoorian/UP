@@ -1,8 +1,8 @@
-package com.a.up
+package com.a.up.general
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import com.a.up.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -9,7 +9,7 @@ class HomeRemote @Inject
 constructor(private val api: Api) {
 
     suspend fun fillAllUsersFromRemote(page: Int): Response<AllUsersResponse> {
-        return api.allArticles(page)
+        return api.allUsersList(page)
     }
 
 }

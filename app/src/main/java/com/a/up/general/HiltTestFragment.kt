@@ -1,18 +1,12 @@
-package com.a.up
+package com.a.up.general
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.components.ApplicationComponent
-import javax.inject.Inject
-import javax.inject.Qualifier
-import javax.inject.Singleton
+import com.a.up.R
+
 //
 //@AndroidEntryPoint
 class HiltTestFragment : Fragment() {

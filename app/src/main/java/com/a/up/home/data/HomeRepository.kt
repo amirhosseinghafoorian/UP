@@ -3,7 +3,7 @@ package com.a.up.home.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.a.up.PagingTest
+import com.a.up.general.MyPagingSource
 import com.a.up.storage.Setting
 import com.a.up.user.model.Data
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +22,7 @@ class HomeRepository @Inject constructor(
                 prefetchDistance = 1
             )
         ) {
-            PagingTest(remote)
+            MyPagingSource(remote)
         }.flow
     }
 

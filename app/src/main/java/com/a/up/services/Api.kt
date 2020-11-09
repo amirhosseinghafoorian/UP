@@ -12,7 +12,7 @@ import retrofit2.http.Query
 interface Api {
 
     @GET("users")
-    suspend fun allArticles(
+    suspend fun allUsersList(
         @Query("page")
         page: Int
     ): Response<AllUsersResponse>

@@ -1,10 +1,10 @@
-package com.a.up
+package com.a.up.general
 
 import androidx.paging.PagingSource
 import com.a.up.home.data.HomeRemote
 import com.a.up.user.model.Data
 
-class PagingTest(
+class MyPagingSource(
     private val backend: HomeRemote,
 
     ) : PagingSource<Int, Data>() {
@@ -21,7 +21,6 @@ class PagingTest(
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
-
 
     }
 

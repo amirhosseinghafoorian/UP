@@ -18,7 +18,7 @@ class UserViewModel
 
     suspend fun login(username: String, password: String) {
         loginResult.postValue(Resource.loading(null))
-        loginResult.postValue(loginUseCase.login("eve.holt@reqres.in", "cityslicka"))
+        loginResult.postValue(loginUseCase.login(username, password))
     }
 
     fun putPrefString(

@@ -2,7 +2,7 @@ package com.a.up.storage
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.a.up.MyApp
+import com.a.up.general.MyApp
 
 class Setting {
     private val prefKey = "locals"

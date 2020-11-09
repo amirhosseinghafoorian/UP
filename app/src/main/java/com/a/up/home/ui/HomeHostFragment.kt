@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.a.up.R
-import com.a.up.setupWithNavController
+import com.a.up.general.setupWithNavController
 import com.a.up.user.data.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home_host.*

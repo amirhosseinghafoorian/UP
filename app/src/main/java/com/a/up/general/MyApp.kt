@@ -1,6 +1,7 @@
-package com.a.up
+package com.a.up.general
 
 import android.app.Application
+import com.a.up.BuildConfig
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
@@ -28,7 +29,7 @@ class MyApp : Application() {
             client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
             client.addPlugin(DatabasesFlipperPlugin(this))
             client.addPlugin(networkFlipperPlugin)
-            client.addPlugin(SharedPreferencesFlipperPlugin(this,"setting"))
+            client.addPlugin(SharedPreferencesFlipperPlugin(this, "setting"))
 
             client.start()
         }
