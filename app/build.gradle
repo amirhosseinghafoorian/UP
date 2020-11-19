@@ -5,7 +5,6 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-
 }
 
 android {
@@ -92,7 +91,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.28-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
-// When using Kotlin.
+    // When using Kotlin.
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 
     // epoxy
@@ -105,7 +104,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
     // paging 3
-    def paging_version = "3.0.0-alpha08"
+    def paging_version = "3.0.0-alpha09"
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
@@ -119,15 +118,15 @@ dependencies {
     implementation "androidx.paging:paging-guava:$paging_version"
 
     // JetPack Compose Integration
-    implementation "androidx.paging:paging-compose:1.0.0-alpha01"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha02"
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     // data store
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha02"
-    implementation "androidx.datastore:datastore-core:1.0.0-alpha02"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha04"
+    implementation "androidx.datastore:datastore-core:1.0.0-alpha04"
 
 }
 
